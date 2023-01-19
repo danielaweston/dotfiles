@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/Users/danielweston/.local/share/nvim/site/pack/packer/start/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-argwrap"] = {
+    loaded = true,
+    path = "/Users/danielweston/.local/share/nvim/site/pack/packer/start/vim-argwrap",
+    url = "https://github.com/FooSoft/vim-argwrap"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/Users/danielweston/.local/share/nvim/site/pack/packer/start/vim-commentary",

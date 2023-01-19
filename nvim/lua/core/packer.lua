@@ -12,6 +12,7 @@ return require("packer").startup(function(use)
   use("gbprod/substitute.nvim")
   use("mbbill/undotree")
   use("windwp/nvim-autopairs")
+  use("FooSoft/vim-argwrap")
 
   use("tpope/vim-commentary")
   use("tpope/vim-fugitive")
