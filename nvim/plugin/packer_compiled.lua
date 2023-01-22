@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/Users/danielweston/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["codi.vim"] = {
+    loaded = true,
+    path = "/Users/danielweston/.local/share/nvim/site/pack/packer/start/codi.vim",
+    url = "https://github.com/metakirby5/codi.vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/danielweston/.local/share/nvim/site/pack/packer/start/friendly-snippets",
