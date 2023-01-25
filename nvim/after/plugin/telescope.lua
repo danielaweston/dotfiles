@@ -10,6 +10,35 @@ vim.keymap.set("n", "<leader>pg", telescope.extensions.live_grep_args.live_grep_
 telescope.setup({
   defaults = {
     path_display = { "truncate" },
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+      "--trim",
+      "--glob",
+      "!**/.git/*",
+    },
+    mappings = {
+      i = {
+        ["<C-u>"] = false,
+      },
+    },
+  },
+  pickers = {
+    find_files = {
+      find_command = {
+        "rg",
+        "--files",
+        "--hidden",
+        "--glob",
+        "!**/.git/*",
+      },
+    },
   },
   extensions = {
     live_grep_args = {
