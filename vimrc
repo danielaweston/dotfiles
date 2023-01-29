@@ -19,8 +19,8 @@ vmap > >gv
 
 nmap <leader>cc :cclose<CR>
 nmap <leader>co :copen<CR>
-nmap <C-j> :cnext<CR>zz
-nmap <C-k> :cprev<CR>zz
+nmap <C-n> :cprev<CR>zz
+nmap <C-m> :cnext<CR>zz
 
 nmap <leader>s :%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>
 vmap <leader>s y:%s/<C-r>\"/<C-r>\"/gI<Left><Left><Left>

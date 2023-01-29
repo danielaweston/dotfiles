@@ -30,8 +30,8 @@ vim.keymap.set("v", ">", ">gv")
 -- Quickfix list shortcuts
 vim.keymap.set("n", "<leader>co", ":copen<CR>")
 vim.keymap.set("n", "<leader>cc", ":cclose<CR>")
-vim.keymap.set("n", "<C-j>", ":cnext<CR>zz")
-vim.keymap.set("n", "<C-k>", ":cprev<CR>zz")
+vim.keymap.set("n", "<C-n>", ":cprev<CR>zz")
+vim.keymap.set("n", "<C-m>", ":cnext<CR>zz")
 
 -- Easy buffer substitution
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
