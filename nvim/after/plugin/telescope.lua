@@ -4,9 +4,10 @@ local actions = require("telescope.actions")
 local live_grep_args_actions = require("telescope-live-grep-args.actions")
 
 vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>pb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 vim.keymap.set("n", "<leader>pq", builtin.quickfix, {})
+vim.keymap.set("n", "<leader>pd", builtin.diagnostics, {})
+vim.keymap.set("n", "<leader>pr", builtin.lsp_references, {})
 vim.keymap.set("n", "<leader>pg", telescope.extensions.live_grep_args.live_grep_args, {})
 
 telescope.setup({
