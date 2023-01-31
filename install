@@ -62,7 +62,8 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim \
 DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 rm -rf $HOME/.config/nvim
-ln -s $DOTFILES/nvim $HOME/.config/nvim
+mkdir -p $HOME/.config/nvim
+ln -s $DOTFILES/nvim/* $HOME/.config/nvim
 
 ln -sf $DOTFILES/zshrc $HOME/.zshrc
 ln -sf $DOTFILES/p10k.zsh $HOME/.p10k.zsh
