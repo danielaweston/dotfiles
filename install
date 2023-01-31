@@ -65,6 +65,10 @@ rm -rf $HOME/.config/nvim
 mkdir -p $HOME/.config/nvim
 ln -s $DOTFILES/nvim/* $HOME/.config/nvim
 
+rm -rf $HOME/.local/bin
+mkdir -p $HOME/.local/bin
+ln -s $DOTFILES/scripts/* $HOME/.local/bin
+
 ln -sf $DOTFILES/zshrc $HOME/.zshrc
 ln -sf $DOTFILES/p10k.zsh $HOME/.p10k.zsh
 ln -sf $DOTFILES/aliases $HOME/.aliases

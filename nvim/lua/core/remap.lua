@@ -36,3 +36,6 @@ vim.keymap.set("n", "<C-m>", ":cnext<CR>zz")
 -- Easy buffer substitution
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 vim.keymap.set("v", "<leader>s", "y:%s/<C-r>\"/<C-r>\"/gI<Left><Left><Left>")
+
+-- Open project in tmux
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/tmuxer<CR>")

@@ -46,6 +46,9 @@ export EDITOR="nvim"
 # Aliases
 source $HOME/.aliases
 
+# Tmux session selector
+bindkey -s ^f "$HOME/.local/bin/tmuxer\n"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Thanks ThePrimagen for the idea
+
+# Pass in directory or fuzzy match from select dirs
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/projects ~/scratch -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+# Exit if nothing selected
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+project=$(basename "$selected" | tr . _)
+
+# Create a detached session for the project
+# Suppressing "duplicate session" error
+tmux new-session -d -s $project -c $selected 2> /dev/null
+
+# Switch to session if in tmux, else attach to session
+if [[ -n $TMUX ]]; then
+    tmux switch-client -t $project
+else
+    tmux attach -t $project
+fi
+
