@@ -13,6 +13,14 @@ lsp.ensure_installed({
 
 lsp.nvim_workspace()
 
+lsp.configure('terraformls', {
+  filetypes = {
+    "terraform",
+    "terraform-vars",
+    "hcl",
+  }
+})
+
 lsp.setup_nvim_cmp({
   sources = {
     { name = "path" },
