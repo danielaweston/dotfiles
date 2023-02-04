@@ -14,11 +14,11 @@ plugins=(
   zsh-vim-mode
 )
 
-source $ZSH/oh-my-zsh.sh
-
 # Path
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+source $ZSH/oh-my-zsh.sh
 
 # Exports
 export EDITOR="nvim"
@@ -40,8 +40,7 @@ MODE_CURSOR_VIINS="blinking bar"
 KEYTIMEOUT=15
 
 # Keybind tmuxer to C-f
-zle -N tmuxer
-bindkey ^F tmuxer
+bindkey -s ^F 'tmuxer\n'
 
 # Escape insert mode with 'jk'
 bindkey -M viins 'jk' vi-cmd-mode
