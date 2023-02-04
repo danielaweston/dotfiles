@@ -1,15 +1,3 @@
-# Path
-export PATH="/opt/homebrew/bin:$PATH"
-
-# Editor
-export EDITOR="nvim"
-
-# Aliases
-source $HOME/.aliases
-
-# Tmux session selector
-bindkey -s ^f "$HOME/.local/bin/tmuxer\n"
-
 # ZSH Config
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM_PLUGIN="$ZSH/custom/plugins"
@@ -19,24 +7,66 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(
   git
+  docker
+  docker-compose
   kubectl
   zsh-autosuggestions
-  zsh-history-substring-search
+  zsh-vim-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
+# Path
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+
+# Exports
+export EDITOR="nvim"
+export DOTFILES="$HOME/projects/dotfiles"
+
+# Aliases
+source $HOME/.aliases
+
 # zsh-autosuggestions
-source $ZSH_CUSTOM_PLUGIN/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60,bg=bold,underline'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#626262,bold"
 
-# zsh-history-substring-search
-source $ZSH_CUSTOM_PLUGIN/zsh-history-substring-search/zsh-history-substring-search.zsh
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='fg=1'
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='fg=10'
+# zsh-vim-mode
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+MODE_CURSOR_VIINS="blinking bar"
+KEYTIMEOUT=15
+
+# Keybind tmuxer to C-f
+zle -N tmuxer
+bindkey ^F tmuxer
+
+# Escape insert mode with 'jk'
+bindkey -M viins 'jk' vi-cmd-mode
+
+# Insert mode keybinds
+bindkey ^Y autosuggest-accept
+bindkey ^P history-beginning-search-backward
+bindkey ^N history-beginning-search-forward
+
+# Normal mode keybinds
+bindkey -M vicmd ^Y autosuggest-accept
+bindkey -M vicmd ^P history-beginning-search-backward
+bindkey -M vicmd ^N history-beginning-search-forward
+
+# History options
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+
+HISTFILE="${HOME}/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST=${HISTSIZE}
 
 # z
 . $(brew --prefix)/etc/profile.d/z.sh

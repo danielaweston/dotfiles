@@ -16,3 +16,9 @@ alias tffmt='terraform fmt -recursive'
 e () {
   $EDITOR ${1:-.}
 }
+
+# Run tmuxer
+tmuxer() {
+  $HOME/.local/bin/tmuxer
+}
+

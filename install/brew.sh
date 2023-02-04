@@ -8,16 +8,19 @@ brew upgrade
 apps=(
   fzf
   git
-  helm
   jq
   nvm
   neovim
   ripgrep
   tmux
-  tree
-  wget
-  yarn
   z
+
+  # Devops Tools
+  docker
+  docker-compose
+  colima
+  kubectl
+  helm
 )
 
 brew install "${apps[@]}"
