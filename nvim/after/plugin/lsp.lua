@@ -5,7 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   "eslint",
   "gopls",
-  "sumneko_lua",
+  "lua_ls",
   "terraformls",
   "tsserver",
   "yamlls",
