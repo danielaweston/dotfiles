@@ -4,6 +4,9 @@ vim.g.mapleader = " "
 -- Easy escape in Insert mode
 vim.keymap.set("i", "jk", "<ESC>")
 
+-- S-Tab to unindent
+vim.keymap.set("i", "<S-Tab>", "<C-d>")
+
 -- View files in Netrw
 vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
 

@@ -13,7 +13,7 @@ lsp.ensure_installed({
 
 lsp.nvim_workspace()
 
-lsp.configure('terraformls', {
+lsp.configure("terraformls", {
   filetypes = {
     "terraform",
     "terraform-vars",
@@ -52,6 +52,10 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set("n", "]e", function()
     vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
   end, opts)
+
+  -- Apply formating options to not continue comments with "o" or "<CR>"
+  vim.opt.formatoptions:remove("o")
+  vim.opt.formatoptions:remove("r")
 end)
 
 lsp.setup()

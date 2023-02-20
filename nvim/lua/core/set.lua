@@ -7,8 +7,12 @@ vim.opt.softtabstop = tabsize
 vim.opt.shiftwidth = tabsize
 vim.opt.expandtab = true
 vim.opt.smarttab = true
-vim.opt.smartindent = true
 vim.opt.backspace = "indent,eol,start"
+
+local indentkeys = "0{,0},0),0],:,!^F,o,O,e"
+vim.opt.cindent = true
+vim.opt.cinkeys = indentkeys
+vim.opt.indentkeys = indentkeys
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
