@@ -20,6 +20,8 @@ return require("packer").startup(function(use)
   use("tpope/vim-repeat")
   use("tpope/vim-surround")
 
+  use("github/copilot.vim")
+
   use({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.1",

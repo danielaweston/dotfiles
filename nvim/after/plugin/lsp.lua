@@ -22,6 +22,10 @@ lsp.configure("terraformls", {
 })
 
 lsp.setup_nvim_cmp({
+  mapping = lsp.defaults.cmp_mappings({
+    ["<Tab>"] = vim.NIL,
+    ["<S-Tab>"] = vim.NIL,
+  }),
   sources = {
     { name = "path" },
     { name = "nvim_lsp", keyword_length = 1 },
