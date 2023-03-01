@@ -12,7 +12,7 @@ export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . "$DOTFILES/install/nvim.sh"
 
 # MacOS applications
-if [[ $OSTYPE == 'darwin'* ]]; then
+if [[ $OSTYPE == "darwin"* ]]; then
   . "$DOTFILES/install/brew-cask.sh"
 fi
 

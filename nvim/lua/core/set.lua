@@ -27,7 +27,7 @@ vim.opt.incsearch = true
 vim.opt.history = 1000
 
 vim.opt.clipboard = "unnamed"
-vim.opt.wildmode = 'longest:full,full'
+vim.opt.wildmode = "longest:full,full"
 
 vim.opt.wrap = false
 vim.opt.scrolloff = 10

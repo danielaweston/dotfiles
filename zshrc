@@ -40,10 +40,10 @@ MODE_CURSOR_VIINS="blinking bar"
 KEYTIMEOUT=15
 
 # Keybind tmuxer to C-f
-bindkey -s ^F 'tmuxer\n'
+bindkey -s ^F "tmuxer\n"
 
-# Escape insert mode with 'jk'
-bindkey -M viins 'jk' vi-cmd-mode
+# Escape insert mode with "jk"
+bindkey -M viins "jk" vi-cmd-mode
 
 # Insert mode keybinds
 bindkey ^Y autosuggest-accept
