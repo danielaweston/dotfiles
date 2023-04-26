@@ -15,6 +15,7 @@ return require("packer").startup(function(use)
   use("FooSoft/vim-argwrap")
   use("metakirby5/codi.vim")
   use("numToStr/Comment.nvim")
+  use("lewis6991/impatient.nvim")
 
   use("tpope/vim-fugitive")
   use("tpope/vim-repeat")
