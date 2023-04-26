@@ -21,6 +21,14 @@ lsp.configure("terraformls", {
   }
 })
 
+lsp.configure("yamlls", {
+  settings = {
+    yaml = {
+      keyOrdering = false
+    }
+  }
+})
+
 lsp.setup_nvim_cmp({
   mapping = lsp.defaults.cmp_mappings({
     ["<Tab>"] = vim.NIL,
