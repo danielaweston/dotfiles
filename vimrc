@@ -29,7 +29,7 @@ command! -nargs=+ Grep execute 'silent vimgrep! <args>' | copen
 
 " Visual settings
 set relativenumber number
-set scrolloff=5
+set scrolloff=10
 set display+=lastline
 
 " Sensible Tab Defaults
