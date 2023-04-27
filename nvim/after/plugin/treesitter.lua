@@ -21,7 +21,6 @@ treesitter.setup {
     "dockerfile",
     "go",
     "hcl",
-    "help",
     "json",
     "lua",
     "javascript",

@@ -18,7 +18,16 @@ lsp.configure("terraformls", {
     "terraform",
     "terraform-vars",
     "hcl",
-  }
+  },
+  on_attach = function()
+    require('treesitter-terraform-doc').setup({
+      command_name       = "OpenDoc",
+      url_opener_command = "!open",
+      jump_argument      = true
+    })
+
+    vim.keymap.set("n", "<leader>td", "<cmd>OpenDoc<CR>")
+  end,
 })
 
 lsp.configure("yamlls", {
@@ -68,6 +77,9 @@ lsp.on_attach(function(_, bufnr)
   -- Apply formating options to not continue comments with "o" or "<CR>"
   vim.opt.formatoptions:remove("o")
   vim.opt.formatoptions:remove("r")
+
+  -- Autoformat on save
+  vim.cmd("au BufWritePre <buffer> lua vim.lsp.buf.format()")
 end)
 
 lsp.setup()
@@ -75,6 +87,3 @@ lsp.setup()
 vim.diagnostic.config({
   virtual_text = true,
 })
-
--- Auto-format on save
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
