@@ -46,12 +46,12 @@ lsp.setup_nvim_cmp({
   sources = {
     { name = "path" },
     { name = "nvim_lsp", keyword_length = 1 },
-    { name = "luasnip", keyword_length = 2 },
-    { name = "buffer", keyword_length = 3 },
+    { name = "luasnip",  keyword_length = 2 },
+    { name = "buffer",   keyword_length = 3 },
   },
 })
 
-lsp.on_attach(function(_, bufnr)
+lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   -- LSP actions
@@ -80,6 +80,12 @@ lsp.on_attach(function(_, bufnr)
 
   -- Autoformat on save
   vim.cmd("au BufWritePre <buffer> lua vim.lsp.buf.format()")
+
+  -- Issues with semantic tokens provider
+  -- https://github.com/neovim/nvim-lspconfig/issues/2552
+  if client.server_capabilities.semanticTokensProvider then
+    client.server_capabilities.semanticTokensProvider = nil
+  end
 end)
 
 lsp.setup()
