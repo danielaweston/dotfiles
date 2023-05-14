@@ -45,7 +45,6 @@ return require("packer").startup(function(use)
     run = ":TSUpdate",
     requires = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "nvim-treesitter/nvim-treesitter-context",
       "Afourcat/treesitter-terraform-doc.nvim",
     }
   })
