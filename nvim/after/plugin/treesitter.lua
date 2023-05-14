@@ -40,6 +40,10 @@ treesitter.setup {
     enable = true,
   },
 
+  indent = {
+    enable = true,
+  },
+
   textobjects = {
     select = {
       enable = true,
