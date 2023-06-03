@@ -71,4 +71,8 @@ return require("packer").startup(function(use)
       { "rafamadriz/friendly-snippets" },
     }
   })
+
+  -- For React/NextJS/Typescript
+  use("jose-elias-alvarez/null-ls.nvim")
+  use("MunifTanjim/prettier.nvim")
 end)

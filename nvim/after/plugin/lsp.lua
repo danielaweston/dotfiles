@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local null_ls = require("null-ls")
 local tfdoc = require("treesitter-terraform-doc")
 
 lsp.preset("recommended")
@@ -100,9 +101,6 @@ lsp.on_attach(function(client, bufnr)
   vim.opt.formatoptions:remove("o")
   vim.opt.formatoptions:remove("r")
 
-  -- Autoformat on save
-  vim.cmd("au BufWritePre <buffer> lua vim.lsp.buf.format()")
-
   -- Issues with semantic tokens provider
   -- https://github.com/neovim/nvim-lspconfig/issues/2552
   if client.server_capabilities.semanticTokensProvider then
@@ -114,4 +112,25 @@ lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true,
+})
+
+local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+local event = "BufWritePre"
+local async = event == "BufWritePost"
+
+null_ls.setup({
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      -- format on save
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, async = async })
+        end,
+        desc = "[lsp] format on save",
+      })
+    end
+  end,
 })
