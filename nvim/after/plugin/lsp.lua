@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local tfdoc = require("treesitter-terraform-doc")
 
 lsp.preset("recommended")
 
@@ -20,7 +21,7 @@ lsp.configure("terraformls", {
     "hcl",
   },
   on_attach = function()
-    require('treesitter-terraform-doc').setup({
+    tfdoc.setup({
       command_name       = "OpenDoc",
       url_opener_command = "!open",
       jump_argument      = true
