@@ -79,9 +79,10 @@ lsp.on_attach(function(client, bufnr)
 
   -- LSP actions
   vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "gd", "<cmd>TroubleToggle lsp_definitions<CR>", { buffer = bufnr, silent = true, noremap = true })
+  vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", { buffer = bufnr, silent = true, noremap = true })
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
