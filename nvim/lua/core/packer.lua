@@ -72,6 +72,11 @@ return require("packer").startup(function(use)
   })
 
   -- For React/NextJS/Typescript
-  use("jose-elias-alvarez/null-ls.nvim")
-  use("MunifTanjim/prettier.nvim")
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    requires = {
+      "MunifTanjim/eslint.nvim",
+      "MunifTanjim/prettier.nvim",
+    }
+  })
 end)
