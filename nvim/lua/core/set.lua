@@ -1,5 +1,8 @@
+vim.opt.cursorline = true
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 2
+vim.opt.ruler = false
 
 local tabsize = 2
 vim.opt.tabstop = tabsize
@@ -30,3 +33,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 
 vim.opt.updatetime = 50
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
