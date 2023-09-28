@@ -1,22 +1,19 @@
--- Start with Copilot enabled
-vim.g.copilot_enabled = 1
+local copilot = require("copilot")
+local copilotSuggestions = require("copilot.suggestion")
 
--- Move through suggestions
-vim.keymap.set("i", "<M-j>", "<Plug>(copilot-next)")
-vim.keymap.set("i", "<M-k>", "<Plug>(copilot-previous)")
+copilot.setup({
+  suggestion = {
+    auto_trigger = true,
+    keymap = {
+      accept = false,
+    },
+  },
+})
 
--- Open copilot panel
-vim.keymap.set({ "i", "n" }, "<M-p>", "<cmd>:Copilot panel<CR>")
-
--- Toggle copilot
-vim.keymap.set({ "i", "n" }, "<M-g>", "<cmd>:lua Toggle_Copilot()<CR>")
-
-function Toggle_Copilot()
-  if vim.g.copilot_enabled == 1 then
-    vim.cmd("call copilot#Dismiss()")
-    vim.cmd("Copilot disable")
+vim.keymap.set('i', '<tab>', function()
+  if copilotSuggestions.is_visible() then
+    copilotSuggestions.accept()
   else
-    vim.cmd("call copilot#Suggest()")
-    vim.cmd("Copilot enable")
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<tab>", true, false, true), "n", false)
   end
-end
+end, { desc = "Super Tab" })

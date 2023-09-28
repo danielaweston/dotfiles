@@ -20,7 +20,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-repeat")
   use("tpope/vim-surround")
 
-  use("github/copilot.vim")
+  use("zbirenbaum/copilot.lua")
 
   use({
     "nvim-telescope/telescope.nvim",
