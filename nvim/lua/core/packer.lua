@@ -6,7 +6,7 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Coloring
-  use("rose-pine/neovim")
+  use("Mofiqul/vscode.nvim")
 
   -- Plugins
   use("gbprod/substitute.nvim")
