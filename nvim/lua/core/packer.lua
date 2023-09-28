@@ -47,10 +47,7 @@ return require("packer").startup(function(use)
     }
   })
 
-  use({
-    'Wansmer/treesj',
-    requires = { 'nvim-treesitter/nvim-treesitter' },
-  })
+  use("Wansmer/treesj")
 
   use({
     "VonHeikemen/lsp-zero.nvim",
