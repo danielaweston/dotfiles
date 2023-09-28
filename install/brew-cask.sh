@@ -16,3 +16,8 @@ apps=(
 )
 
 brew install "${apps[@]}" --cask
+
+# Patched Font
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+
