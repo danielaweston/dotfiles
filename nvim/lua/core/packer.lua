@@ -13,7 +13,6 @@ return require("packer").startup(function(use)
   use("mbbill/undotree")
   use("windwp/nvim-autopairs")
   use("windwp/nvim-ts-autotag")
-  use("FooSoft/vim-argwrap")
   use("numToStr/Comment.nvim")
   use("ThePrimeagen/harpoon")
 
@@ -46,6 +45,11 @@ return require("packer").startup(function(use)
       "nvim-treesitter/nvim-treesitter-textobjects",
       "Afourcat/treesitter-terraform-doc.nvim",
     }
+  })
+
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter/nvim-treesitter' },
   })
 
   use({
