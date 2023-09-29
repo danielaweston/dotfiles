@@ -22,21 +22,18 @@ return require("packer").startup(function(use)
 
   use("zbirenbaum/copilot.lua")
 
+  use("nvim-tree/nvim-web-devicons")
+  use("nvim-lua/plenary.nvim")
+
   use({
     "nvim-telescope/telescope.nvim",
     tag = "0.1.1",
     requires = {
-      "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-live-grep-args.nvim",
     }
   })
 
-  use({
-    "folke/trouble.nvim",
-    requires = {
-      "nvim-tree/nvim-web-devicons",
-    }
-  })
+  use("folke/trouble.nvim")
 
   use({
     "nvim-treesitter/nvim-treesitter",
