@@ -43,24 +43,4 @@ treesitter.setup {
   indent = {
     enable = true,
   },
-
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      include_surrounding_whitespace = true,
-      keymaps = {
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-      selection_modes = {
-        ["@function.outer"] = "V",
-        ["@class.outer"] = "V",
-      },
-    },
-  },
 }
