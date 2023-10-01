@@ -10,6 +10,7 @@ export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . "$DOTFILES/install/brew.sh"
 . "$DOTFILES/install/zsh.sh"
 . "$DOTFILES/install/nvim.sh"
+. "$DOTFILES/install/alacritty.sh"
 
 # MacOS applications
 if [[ $OSTYPE == "darwin"* ]]; then

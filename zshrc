@@ -2,6 +2,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM_PLUGIN="$ZSH/custom/plugins"
 
+export TERM="alacritty"
+
 ZSH_THEME="simple"
 COMPLETION_WAITING_DOTS="true"
 

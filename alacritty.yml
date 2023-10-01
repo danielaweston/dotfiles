@@ -1,0 +1,60 @@
+env:
+  TERM: alacritty
+
+font:
+  size: 12
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+  italic:
+    family: Hack Nerd Font  
+    style: Italic
+
+window:
+  dynamic_padding: true
+
+scrolling:
+  history: 10000
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+schemes:
+  # Colors from https://github.com/Mofiqul/vscode.nvim
+  codedark: &vscode
+
+    primary:
+      background: '#1e1e1e'
+      foreground: '#d4d4d4'
+
+    cursor:
+      text: '#d4d4d4'
+      cursor: '#d4d4d4'
+
+    normal:
+      black:   '#1e1e1e'
+      red:     '#f44747'
+      green:   '#608b4e'
+      yellow:  '#dcdcaa'
+      blue:    '#569cd6'
+      magenta: '#c678dd'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+    bright:
+      black:   '#545454'
+      red:     '#f44747'
+      green:   '#608b4e'
+      yellow:  '#dcdcaa'
+      blue:    '#569cd6'
+      magenta: '#c678dd'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+colors: *vscode
+
+

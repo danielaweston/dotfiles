@@ -1,10 +1,14 @@
+# Patched Font
+brew tap homebrew/cask-fonts
+
 apps=(
+  alacritty
   alfred
   bartender
   bettertouchtool
   discord
+  font-hack-nerd-font
   google-chrome
-  iterm2
   numi
   obsidian
   rectangle
@@ -16,8 +20,4 @@ apps=(
 )
 
 brew install "${apps[@]}" --cask
-
-# Patched Font
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
 
