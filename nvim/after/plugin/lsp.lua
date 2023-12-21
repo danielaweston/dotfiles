@@ -1,5 +1,4 @@
 local lsp = require("lsp-zero")
-local null_ls = require("null-ls")
 local tfdoc = require("treesitter-terraform-doc")
 
 lsp.preset("recommended")
@@ -61,6 +60,14 @@ lsp.configure("yamlls", {
   }
 })
 
+lsp.configure("tsserver", {
+  -- Disabling formatting in favour of using null-ls
+  on_init = function(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentFormattingRangeProvider = false
+  end,
+})
+
 lsp.setup_nvim_cmp({
   mapping = lsp.defaults.cmp_mappings({
     ["<Tab>"] = vim.NIL,
@@ -81,6 +88,7 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
   vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
   vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+  vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
   vim.keymap.set("n", "gd", "<cmd>TroubleToggle lsp_definitions<CR>", { buffer = bufnr, silent = true, noremap = true })
   vim.keymap.set("n", "gr", "<cmd>TroubleToggle lsp_references<CR>", { buffer = bufnr, silent = true, noremap = true })
   vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
@@ -98,11 +106,11 @@ lsp.on_attach(function(client, bufnr)
     vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
   end, opts)
 
+  lsp.buffer_autoformat()
+
   -- Apply formating options to not continue comments with "o" or "<CR>"
   vim.opt.formatoptions:remove("o")
   vim.opt.formatoptions:remove("r")
-
-  lsp.buffer_autoformat()
 
   -- Issues with semantic tokens provider
   -- https://github.com/neovim/nvim-lspconfig/issues/2552
@@ -111,26 +119,18 @@ lsp.on_attach(function(client, bufnr)
   end
 end)
 
-lsp.format_on_save({
-  format_opts = {
-    async = false,
-    timeout_ms = 10000,
-  },
-  servers = {
-    ['null-ls'] = { 'javascript', 'typescript' }
-  }
-})
+-- lsp.format_on_save({
+--   format_opts = {
+--     async = false,
+--     timeout_ms = 10000,
+--   },
+--   servers = {
+--     ['null-ls'] = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' }
+--   }
+-- })
 
 lsp.setup()
 
 vim.diagnostic.config({
   virtual_text = true,
-})
-
-local null_opts = lsp.build_options('null-ls', {})
-
-null_ls.setup({
-  on_attach = function(client, bufnr)
-    null_opts.on_attach(client, bufnr)
-  end,
 })
