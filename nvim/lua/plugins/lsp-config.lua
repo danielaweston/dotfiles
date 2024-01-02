@@ -1,38 +1,93 @@
 return {
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
     lazy = false,
     config = function()
       require("mason").setup()
-    end
-  },
-  {
-    'williamboman/mason-lspconfig.nvim',
-    lazy = false,
-    opts = {
-      auto_install = true,
-    }
+    end,
   },
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    },
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+      local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")
 
-      lspconfig.tsserver.setup({
-        capabilites = capabilities,
+      mason_lspconfig.setup({
+        ensure_installed = {
+          "tsserver",
+          "lua_ls",
+          "gopls",
+          "terraformls",
+          "yamlls",
+        },
       })
 
-      lspconfig.lua_ls.setup({
-        capabilites = capabilities,
+      -- Default capabilities doesn't merge with native capabilities
+      -- https://github.com/hrsh7th/cmp-nvim-lsp/issues/38
+      local capabilities = vim.tbl_deep_extend(
+        "force",
+        vim.lsp.protocol.make_client_capabilities(),
+        require("cmp_nvim_lsp").default_capabilities()
+      )
+
+      -- Automatically setup LSP for all installed LSP's
+      mason_lspconfig.setup_handlers({
+        -- Default handler for servers
+        function(server_name)
+          require("lspconfig")[server_name].setup({
+            capabilities = capabilities,
+          })
+        end,
+        -- Dedicated handlers for specific servers
+        ["tsserver"] = function()
+          lspconfig.tsserver.setup({
+            capabilities = capabilities,
+            -- Use none-ls and prettierd for formatting instead
+            on_init = function(client)
+              client.server_capabilities.documentFormattingProvider = false
+              client.server_capabilities.documentFormattingRangeProvider = false
+            end,
+          })
+        end,
+        ["lua_ls"] = function()
+          lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" },
+                },
+              },
+            },
+          })
+        end,
       })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-    end
+      -- Diagnostic keymaps
+      vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+      vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+
+      -- Use LspAttach autocommand to only map the following keys
+      -- after the language server attaches to the current buffer
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+
+        callback = function(ev)
+          local opts = { buffer = ev.buf }
+
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+        end,
+      })
+    end,
   },
 }
