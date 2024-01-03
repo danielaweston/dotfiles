@@ -19,9 +19,11 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
+      "onsails/lspkind.nvim", -- For menu formatting
     },
     config = function()
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
       local luasnip = require("luasnip")
 
       cmp.setup({
@@ -49,6 +51,17 @@ return {
         window = {
           documentation = cmp.config.window.bordered(),
           completion = cmp.config.window.bordered(),
+        },
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = "symbol_text",
+            menu = {
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              luasnip = "[LuaSnip]",
+              nvim_lua = "[Lua]",
+            },
+          }),
         },
       })
     end,
