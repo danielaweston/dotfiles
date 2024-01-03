@@ -23,6 +23,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Undo history
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -36,8 +38,3 @@ vim.opt.clipboard = "unnamedplus"      -- Use system clipboard
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 
 vim.opt.updatetime = 50
-
--- Cannot remember why we do this
--- vim.opt.backspace = "indent,eol,start"
--- vim.opt.splitbelow = true
--- vim.opt.splitright = true
