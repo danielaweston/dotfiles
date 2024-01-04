@@ -8,6 +8,7 @@ return {
       sources = {
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.formatting.stylua,
       },
       -- Format on save
