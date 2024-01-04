@@ -11,10 +11,12 @@ return {
     lazy = false,
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      "Afourcat/treesitter-terraform-doc.nvim",
     },
     config = function()
       local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")
+      local tfdoc = require("treesitter-terraform-doc")
 
       mason_lspconfig.setup({
         ensure_installed = {
@@ -50,6 +52,25 @@ return {
             on_init = function(client)
               client.server_capabilities.documentFormattingProvider = false
               client.server_capabilities.documentFormattingRangeProvider = false
+            end,
+          })
+        end,
+        ["terraformls"] = function()
+          lspconfig.terraformls.setup({
+            capabilities = capabilities,
+            filetypes = {
+              "terraform",
+              "terraform-vars",
+              "hcl",
+            },
+            on_attach = function()
+              tfdoc.setup({
+                command_name = "OpenDoc",
+                url_opener_command = "!open",
+                jump_argument = true,
+              })
+
+              vim.keymap.set("n", "<leader>td", "<cmd>OpenDoc<CR>")
             end,
           })
         end,
