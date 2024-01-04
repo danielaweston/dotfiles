@@ -15,6 +15,11 @@ apps=(
   tmux
   z
 
+  # Languages
+  typescript
+  go
+  terraform
+
   # Devops Tools
   docker
   docker-compose
