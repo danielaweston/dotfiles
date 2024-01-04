@@ -7,6 +7,9 @@ vim.keymap.set("i", "jk", "<ESC>")
 -- Clear search highlighting
 vim.keymap.set("n", "<leader>/", ":noh<CR>")
 
+-- View files in Netrw
+vim.keymap.set("n", "<leader>pv", ":Ex<CR>")
+
 -- Bind redo to r
 vim.keymap.set("n", "r", "<C-r>")
 
@@ -26,7 +29,7 @@ vim.keymap.set("v", ">", ">gv")
 
 -- Easy buffer substitution
 vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-vim.keymap.set("v", "<leader>s", "y:%s/<C-r>\"/<C-r>\"/gI<Left><Left><Left>")
+vim.keymap.set("v", "<leader>s", 'y:%s/<C-r>"/<C-r>"/gI<Left><Left><Left>')
 
 -- Open project finder
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.local/bin/tmuxer<CR>")
