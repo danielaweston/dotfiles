@@ -107,6 +107,11 @@ return {
           vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, opts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
           vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+
+          -- Fixes broken/flickering colors (not all LSP's support semantic tokens)
+          -- https://github.com/neovim/nvim-lspconfig/issues/2552
+          local client = vim.lsp.get_client_by_id(ev.data.client_id)
+          client.server_capabilities.semanticTokensProvider = nil
         end,
       })
     end,
