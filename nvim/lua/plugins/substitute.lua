@@ -1,14 +1,14 @@
 return {
-	"gbprod/substitute.nvim",
-	version = "*",
-	config = function()
-		local substitute = require("substitute")
+  "gbprod/substitute.nvim",
+  version = "*",
+  config = function()
+    local substitute = require("substitute")
 
-		substitute.setup({})
+    substitute.setup({})
 
-		vim.keymap.set("n", "s", substitute.operator)
-		vim.keymap.set("n", "ss", substitute.line)
-		vim.keymap.set("n", "S", substitute.eol)
-		vim.keymap.set("x", "s", substitute.visual)
-	end,
+    vim.keymap.set("n", "s", substitute.operator)
+    vim.keymap.set("n", "ss", substitute.line)
+    vim.keymap.set("n", "S", substitute.eol)
+    vim.keymap.set("x", "s", substitute.visual)
+  end,
 }

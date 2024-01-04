@@ -7,9 +7,6 @@ return {
       "rafamadriz/friendly-snippets",
     },
     build = "make install_jsregexp",
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -25,6 +22,8 @@ return {
       local cmp = require("cmp")
       local lspkind = require("lspkind")
       local luasnip = require("luasnip")
+
+      require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
         snippet = {
