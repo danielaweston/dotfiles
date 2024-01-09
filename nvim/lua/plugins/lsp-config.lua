@@ -1,30 +1,26 @@
 return {
   {
-    "williamboman/mason.nvim",
-    lazy = false,
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "Afourcat/treesitter-terraform-doc.nvim",
     },
     config = function()
+      local mason = require("mason")
       local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")
       local tfdoc = require("treesitter-terraform-doc")
 
+      mason.setup({})
       mason_lspconfig.setup({
         ensure_installed = {
           "tsserver",
-          "lua_ls",
           "gopls",
           "terraformls",
           "yamlls",
+          "lua_ls",
         },
       })
 
@@ -102,11 +98,11 @@ return {
           local opts = { buffer = ev.buf }
 
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts)
+          vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, opts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-          vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
           -- Fixes broken/flickering colors (not all LSP's support semantic tokens)
           -- https://github.com/neovim/nvim-lspconfig/issues/2552
