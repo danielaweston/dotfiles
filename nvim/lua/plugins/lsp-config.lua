@@ -101,7 +101,6 @@ return {
           vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
           -- Fixes broken/flickering colors (not all LSP's support semantic tokens)

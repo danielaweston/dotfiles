@@ -51,6 +51,7 @@ return {
       vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
       vim.keymap.set("n", "<leader>pg", builtin.live_grep, {})
       vim.keymap.set("n", "<leader>pd", builtin.diagnostics, {})
+      vim.keymap.set("n", "gr", builtin.lsp_references, {})
 
       require("telescope").load_extension("ui-select")
     end,
