@@ -25,6 +25,7 @@ vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.updatetime = 50
 
 -- Undo history
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
@@ -37,4 +38,9 @@ vim.opt.autoread = true                -- Re-read files when changed outside of 
 vim.opt.clipboard = "unnamedplus"      -- Use system clipboard
 vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 
-vim.opt.updatetime = 50
+-- Disable auto-commenting new lines
+-- https://stackoverflow.com/questions/6076592
+vim.api.nvim_create_autocmd("BufWinEnter,BufNewFile", {
+  pattern = { "*" },
+  command = "setlocal formatoptions-=cro",
+})
