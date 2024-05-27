@@ -2,7 +2,6 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'AndreM222/copilot-lualine',
   },
   config = function()
     local lualine = require("lualine")
@@ -23,7 +22,7 @@ return {
           },
         },
         lualine_c = { 'filename' },
-        lualine_x = { 'copilot', 'filetype', 'encoding' },
+        lualine_x = { 'filetype', 'encoding' },
         lualine_y = {},
         lualine_z = {},
       },

@@ -40,7 +40,7 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 
 -- Disable auto-commenting new lines
 -- https://stackoverflow.com/questions/6076592
-vim.api.nvim_create_autocmd("BufWinEnter,BufNewFile", {
+vim.api.nvim_create_autocmd({ "BufWinEnter" , "BufNewFile" }, {
   pattern = { "*" },
   command = "setlocal formatoptions-=cro",
 })

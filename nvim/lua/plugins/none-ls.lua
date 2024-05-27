@@ -7,9 +7,14 @@ return {
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.eslint_d.with({
+          condition = function(utils)
+            return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs" }) -- only enable if root has .eslintrc.js or .eslintrc.cjs
+          end,
+        }),
         null_ls.builtins.diagnostics.tsc,
         null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.terraform_fmt,
       },
       -- Format on save
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save
