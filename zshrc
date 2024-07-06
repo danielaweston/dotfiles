@@ -68,6 +68,9 @@ HISTFILE="${HOME}/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=${HISTSIZE}
 
+# fzf
+source <(fzf --zsh)
+
 # z
 . $(brew --prefix)/etc/profile.d/z.sh
 
@@ -84,4 +87,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
 autoload -U compinit; compinit
