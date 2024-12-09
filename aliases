@@ -19,6 +19,6 @@ alias kdr='kubectl --dry-run=client -o yaml'
 
 # Open this directory or specified file/directory in preferred editor
 e () {
-  $EDITOR ${1:-.}
+  $EDITOR ${@:-.}
 }
 

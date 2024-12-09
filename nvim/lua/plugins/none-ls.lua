@@ -1,5 +1,11 @@
 -- Config courtesy of https://github.com/citosid/vim/blob/3dbe530186451342973be0fddb6e2e10099f1240/lua/plugins/none-ls.lua
 
+local eslintOpts = {
+	condition = function(utils)
+		return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" })
+	end,
+}
+
 return {
 	{
 		"jay-babu/mason-null-ls.nvim",
@@ -48,9 +54,9 @@ return {
 				nls.builtins.formatting.stylua,
 
 				-- Formatters based-off the new none-ls-extras plugin
-				require("none-ls.code_actions.eslint_d"),
-				require("none-ls.diagnostics.eslint_d"),
-				require("none-ls.formatting.eslint_d"),
+				require("none-ls.code_actions.eslint_d").with(eslintOpts),
+				require("none-ls.diagnostics.eslint_d").with(eslintOpts),
+				require("none-ls.formatting.eslint_d").with(eslintOpts),
 			})
 
 			opts.on_attach = function(current_client, bufnr)
