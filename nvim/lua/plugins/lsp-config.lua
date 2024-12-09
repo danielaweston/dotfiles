@@ -6,6 +6,7 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"Afourcat/treesitter-terraform-doc.nvim",
+			"artemave/workspace-diagnostics.nvim",
 		},
 		config = function()
 			local mason = require("mason")
@@ -24,7 +25,7 @@ return {
 					"lua_ls",
 					"tailwindcss",
 					"terraformls",
-					"tsserver",
+					"ts_ls",
 					"yamlls",
 				},
 			})
@@ -43,16 +44,22 @@ return {
 				function(server_name)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+						on_attach = function(client, bufnr)
+							require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+						end,
 					})
 				end,
 				-- Dedicated handlers for specific servers
-				["tsserver"] = function()
-					lspconfig.tsserver.setup({
+				["ts_ls"] = function()
+					lspconfig.ts_ls.setup({
 						capabilities = capabilities,
 						-- Use none-ls and prettierd for formatting instead
 						on_init = function(client)
 							client.server_capabilities.documentFormattingProvider = false
 							client.server_capabilities.documentFormattingRangeProvider = false
+						end,
+						on_attach = function(client, bufnr)
+							require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 						end,
 					})
 				end,
@@ -64,7 +71,7 @@ return {
 							"terraform-vars",
 							"hcl",
 						},
-						on_attach = function()
+						on_attach = function(client, bufnr)
 							tfdoc.setup({
 								command_name = "OpenDoc",
 								url_opener_command = "!open",
@@ -72,6 +79,8 @@ return {
 							})
 
 							vim.keymap.set("n", "<leader>td", "<cmd>OpenDoc<CR>")
+
+							require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 						end,
 					})
 				end,
@@ -85,6 +94,9 @@ return {
 								},
 							},
 						},
+						on_attach = function(client, bufnr)
+							require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+						end,
 					})
 				end,
 			})
