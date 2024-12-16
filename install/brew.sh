@@ -7,13 +7,14 @@ brew upgrade
 
 apps=(
   fzf
+  gh
   git
   jq
   nvm
   neovim
   ripgrep
   tmux
-  z
+  tree
 
   # Languages
   typescript
@@ -23,7 +24,6 @@ apps=(
   # Devops Tools
   docker
   docker-compose
-  colima
   kubectl
   helm
 )

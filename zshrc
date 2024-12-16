@@ -71,9 +71,6 @@ SAVEHIST=${HISTSIZE}
 # fzf
 source <(fzf --zsh)
 
-# z
-. $(brew --prefix)/etc/profile.d/z.sh
-
 # NVM Configuration
 source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="$HOME/.nvm"
