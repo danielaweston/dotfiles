@@ -1,0 +1,88 @@
+{
+  "keyMappings": "\" Remove/Restore tabs\nunmap d\nunmap u\nmap d removeTab\nmap u restoreTab\n\n\" Scroll up/down\nmap <c-d> scrollPageDown\nmap <c-u> scrollPageUp\n\n\" Jump back to previous tab\nunmap ^\nmap <c-o> visitPreviousTab",
+  "linkHintCharacters": "jkluiosdfwer",
+  "scrollStepSize": 100,
+  "settingsVersion": "2.1.2",
+  "exclusionRules": [
+    {
+      "passKeys": "?hjklgGdrsfFoObB0$^ytxXTWpmaA`iuUeEzHLvV/",
+      "pattern": "https?://mail.google.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://smashkarts.io/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://10fastfingers.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://monkeytype.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://ac.draw.io/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.nytimes.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://vim-adventures.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://read.readwise.io/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://untap.in/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://a756610a-3f0e-47a2-9391-1fa89c0a37db.poki-gdn.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.vimgenius.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://play.typeracer.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://rampion.github.io/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://vimsnake.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://wordle.mottox2.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.addictinggames.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://www.netflix.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://leetcode.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://excalidraw.com/*"
+    },
+    {
+      "passKeys": "",
+      "pattern": "https?://drive.google.com/*"
+    }
+  ]
+}
