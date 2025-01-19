@@ -6,7 +6,7 @@ rm -rf $HOME/.local/bin
 mkdir -p $HOME/.local/bin
 ln -snf $DOTFILES/scripts/* $HOME/.local/bin
 
-ln -sf $DOTFILES/alacritty.yml $HOME/.alacritty.yml
+ln -sf $DOTFILES/alacritty.toml $HOME/.alacritty.toml
 ln -sf $DOTFILES/zshrc $HOME/.zshrc
 ln -sf $DOTFILES/aliases $HOME/.aliases
 ln -sf $DOTFILES/tmux.conf $HOME/.tmux.conf
