@@ -15,13 +15,17 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = {
 					"branch",
-					"diff",
 					{
 						"diagnostics",
 						sources = { "nvim_workspace_diagnostic" },
 					},
 				},
-				lualine_c = { "filename" },
+				lualine_c = {
+					{
+						"filename",
+						path = 4,
+					},
+				},
 				lualine_x = { "filetype", "encoding" },
 				lualine_y = {},
 				lualine_z = {},
