@@ -6,6 +6,10 @@ rm -rf $HOME/.local/bin
 mkdir -p $HOME/.local/bin
 ln -snf $DOTFILES/scripts/* $HOME/.local/bin
 
+rm -rf $HOME/.config/karabiner
+mkdir -p $HOME/.config/karabiner
+ln -sf $DOTFILES/config/karabiner.json $HOME/.config/karabiner/karabiner.json
+
 ln -sf $DOTFILES/alacritty.toml $HOME/.alacritty.toml
 ln -sf $DOTFILES/zshrc $HOME/.zshrc
 ln -sf $DOTFILES/aliases $HOME/.aliases

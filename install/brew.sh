@@ -46,6 +46,7 @@ apps=(
   discord
   font-hack-nerd-font
   google-chrome
+  karabiner-elements
   numi
   obsidian
   rectangle
