@@ -11,12 +11,14 @@ plugins=(
   docker-compose
   kubectl
   zsh-autosuggestions
+  zsh-system-clipboard
   zsh-vim-mode
 )
 
 # Path
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -27,6 +29,9 @@ export TERM="alacritty"
 
 # Aliases
 source $HOME/.aliases
+
+# Keybind tmuxer to C-f
+bindkey -s ^F "tmuxer\n"
 
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -39,9 +44,6 @@ VI_MODE_SET_CURSOR=true
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 MODE_CURSOR_VIINS="blinking bar"
 KEYTIMEOUT=15
-
-# Keybind tmuxer to C-f
-bindkey -s ^F "tmuxer\n"
 
 # Escape insert mode with "jk"
 bindkey -M viins "jk" vi-cmd-mode
@@ -65,17 +67,43 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 
 HISTFILE="${HOME}/.zsh_history"
-HISTSIZE=10000
-SAVEHIST=${HISTSIZE}
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=999999999
+SAVEHIST=999999999
+HISTFILESIZE=100000000
 
 # fzf
 source <(fzf --zsh)
 
 # NVM Configuration
-source $(brew --prefix nvm)/nvm.sh
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 # pnpm
 export PNPM_HOME="/Users/dweston/Library/pnpm"
