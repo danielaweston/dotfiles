@@ -1,8 +1,8 @@
 [env]
-TERM = "xterm-256color"
+TERM = "alacritty"
 
 [scrolling]
-history = 10000
+history = 50000
 
 [selection]
 save_to_clipboard = true
