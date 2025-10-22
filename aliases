@@ -22,3 +22,5 @@ e () {
   $EDITOR ${@:-.}
 }
 
+# Lazygit
+alias lg='lazygit'

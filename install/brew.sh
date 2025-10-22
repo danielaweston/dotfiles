@@ -20,6 +20,7 @@ apps=(
   gh
   git
   jq
+  lazygit
   nvm
   neovim
   ripgrep
@@ -57,7 +58,6 @@ apps=(
   topnotch
 )
 
-for i in "${apps[@]}"
-do
- brew_install $i
+for i in "${apps[@]}"; do
+  brew_install $i
 done
