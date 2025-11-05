@@ -19,4 +19,8 @@ if true then return {
       }
     }
   },
+  {
+    "folke/flash.nvim",
+    enabled = false
+  },
 } end
