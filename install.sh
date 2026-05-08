@@ -9,6 +9,5 @@ export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Package managers and packages
 . "$DOTFILES/install/brew.sh"
 . "$DOTFILES/install/zsh.sh"
-. "$DOTFILES/install/nvim.sh"
 . "$DOTFILES/install/alacritty.sh"
 

@@ -1,6 +1,26 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
-if true then return {
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "bash",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "terraform",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+      },
+    },
+  },
   {
     "folke/snacks.nvim",
     opts = {
@@ -15,13 +35,13 @@ if true then return {
     event = "VeryLazy",
     opts = {
       cmdline = {
-        view = "cmdline"
-      }
-    }
+        view = "cmdline",
+      },
+    },
   },
   {
     "folke/flash.nvim",
-    enabled = false
+    enabled = false,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -42,8 +62,8 @@ if true then return {
             fallback()
           else
             fallback()
-      end
-        end, {"i", "s"}),
+          end
+        end, { "i", "s" }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.confirm({ select = true })
@@ -81,5 +101,5 @@ if true then return {
         json = { "prettierd" },
       },
     },
-  }
-} end
+  },
+}
